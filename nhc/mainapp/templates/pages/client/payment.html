@@ -1,0 +1,74 @@
+{% extends 'pages/client/base.html' %}
+
+{% block content %}
+<div class="row">
+  <div class="col-lg-12 col-md-6 col-sm-3">
+    <!--messages-->
+    {% include 'messages.html' %}
+    <!--messages-->
+    <div class="card shadow">
+      <div class="card-header">
+        <h2>Payment Details</h2>
+      </div>
+      <div class="card-body">
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop">
+          Add Payments
+        </button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Payment Form</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form method="post">
+                  {% csrf_token %}
+                  {{ form.as_p }}
+                  <button type="submit" class="btn btn-primary">Submit Payment</button>
+              </form>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--table-->
+        <div class="table-responsive  animate__animated animate__fadeIn">
+          <b>House Price: </b>Tsh.{{house_price}} <br><br>
+          <p>You need to pay 10% of the house price: Tsh.{{ payment_amount }}</p><br>
+          <table id="mytable" class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th>Payment Method</th>
+                <th>Amount</th>
+                <th>House Price</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for p in payment %}
+              <tr>
+                <td>{{ p.payment_method }}</td>
+                <td>Tsh.{{ p.amount }}</td>
+                <td>Tsh.{{house_price}}</td>
+                
+
+                <td style="display:flex;">
+                  <a href="" class="btn btn-secondary" style="margin-right: 10px;">View</a>
+                </td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+        <!--table-->
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends 'pages/officers/base.html' %}
+{% block content %}
+<div class="row">
+  <div class="col-lg-6 col-md-6 col-sm-3">
+    <!--messages-->
+    {% include 'messages.html' %}
+    <!--messages-->
+   <div class="card shadow">
+    <div class="card-header">
+      <h2>Edit Applicant Particulars</h2>
+    </div>
+    <div class="card-body">
+        <form action="" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+             {{form.as_p}}
+            <div class="row">
+              <div class="col-md-6">
+                <a href="{% url 'applicant_details' %}" class="btn btn-secondary form-control">Close</a>
+                </div>
+              <div class="col-md-6">
+                <button type="submit" class="btn btn-info form-control">Save Details</button>
+              </div>
+            </div>
+          </form>
+    </div>
+   </div>
+  </div>
+</div>
+
+{% endblock %}

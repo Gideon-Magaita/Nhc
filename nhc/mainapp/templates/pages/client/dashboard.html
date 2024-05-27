@@ -1,0 +1,134 @@
+{% extends 'pages/client/base.html' %}
+{% block content %}
+<div class="row animate__animated animate__fadeInDown">
+  <div class="col-lg-3 col-md-6 col-sm-6">
+    <div class="card card-stats">
+      <div class="card-body ">
+        <div class="row">
+          <div class="col-5 col-md-4">
+            <div class="icon-big text-center icon-warning">
+              <i class="nc-icon nc-tile-56 text-warning"></i>
+            </div>
+          </div>
+          <div class="col-7 col-md-8">
+            <div class="numbers">
+              <p class="card-category">Regions</p>
+              <p class="card-title">20<p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer ">
+        <hr>
+        <div class="stats">
+          <i class="fa fa-refresh"></i>
+          View
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-3 col-md-6 col-sm-6">
+    <div class="card card-stats">
+      <div class="card-body ">
+        <div class="row">
+          <div class="col-5 col-md-4">
+            <div class="icon-big text-center icon-warning">
+              <i class="nc-icon nc-bank text-success"></i>
+            </div>
+          </div>
+          <div class="col-7 col-md-8">
+            <div class="numbers">
+              <p class="card-category">Houses</p>
+              <p class="card-title">{{house}}<p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer ">
+        <hr>
+        <div class="stats">
+          <i class="fa fa-calendar-o"></i>
+          Rent now
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-3 col-md-6 col-sm-6">
+    <div class="card card-stats">
+      <div class="card-body ">
+        <div class="row">
+          <div class="col-5 col-md-4">
+            <div class="icon-big text-center icon-warning">
+              <i class="nc-icon nc-vector text-danger"></i>
+            </div>
+          </div>
+          <div class="col-7 col-md-8">
+            <div class="numbers">
+              <p class="card-category">Clients</p>
+              <p class="card-title">{{clients}}<p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer ">
+        <hr>
+        <div class="stats">
+          <i class="fa fa-clock-o"></i>
+          Today
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-3 col-md-6 col-sm-6">
+    <div class="card card-stats">
+      <div class="card-body ">
+        <div class="row">
+          <div class="col-5 col-md-4">
+            <div class="icon-big text-center icon-warning">
+              <i class="nc-icon nc-bell-55 text-primary"></i>
+            </div>
+          </div>
+          <div class="col-7 col-md-8">
+            <div class="numbers">
+              <p class="card-category">Projects</p>
+              <p class="card-title">{{project}}<p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer ">
+        <hr>
+        <div class="stats">
+          <i class="fa fa-refresh"></i>
+          Update now
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--innercard-->
+<div class="col-md-12">
+  <div class="card card-chart">
+    <div class="card-header">
+      <h5 class="card-title">National Housing Corporation - NHC</h5>
+      <p class="card-category">Procedures to follow</p>
+    </div>
+    <div class="card-body">
+     <ol>
+      <li>Submission of the dully filled “House Purchase Application Form” together with the proof of payment of application fee of Tshs. 12,500 and down payment of 10% of the house purchase price, as commitment by the applicant desire and ability to purchase the house. The applicant is also required to submit copy of Identity card (NIDA) showing nationality of the applicant and one passport size photo.</li><br>
+      <li>Scrutinizing the received ‘House Purchase Application Form” and shortlisting all those that meet all the set criteria for house purchase based on first come, first served criteria.</li><br>
+      <li>The Corporation will however continue to receive deposits of up to 20% of the total number houses under sale as a buffer (waiting list). The clients under waiting list will not sign Sales Agreement as they shall not have been allocated any units for sale. In the event that the client wants to withdraw from the waiting list, refund amount will not be deducted</li><br>
+      <li>After the applicant receives sales agreement for house purchase application, she/he will be given 90 calendar days from the date of the letter, to finalize payment of the remaining 90% of the house purchase price. The payment plan can be evidenced either by payment through the control number provided by NHC or by confirmation of mortgage offered to him by one of the participating financial partners.</li><br>
+     </ol>
+     <a href="https://www.nhc.co.tz/" style="text-decoration: none;" target="_blank">View House details and Projects</a>
+    </div>
+    <div class="card-footer">
+    
+      <hr />
+      <div class="card-stats">
+        <i class="fa fa-check"></i> Rember to attach all neccessary documents
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,89 @@
+<div class="sidebar-wrapper">
+    <ul class="nav">
+      <li class="{% if request.path == '/' %}active{% endif %}">
+        <a href="{% url 'home' %}">
+          <i class="nc-icon nc-bank"></i>
+          <p>Dashboard</p>
+        </a>
+      </li>
+      <hr>
+      <li class="{% if request.path == '/applicant_info' %}active{% endif %}">
+        <a href="{% url 'applicant_info' %}">
+          <i class="nc-icon nc-diamond"></i>
+          <p>Applicant Info</p>
+        </a>
+      </li>
+      <hr>
+      <li class="{% if request.path == '/contact_info' %}active{% endif %}">
+        <a href="{% url 'contact_info' %}">
+          <i class="nc-icon nc-pin-3"></i>
+          <p>Contact Details</p>
+        </a>
+      </li>
+      <hr>
+      <li class="{% if request.path == '/dependant_details' %}active{% endif %}">
+        <a href="{% url 'dependant_details' %}">
+          <i class="nc-icon nc-pin-3"></i>
+          <p>Dependants</p>
+        </a>
+      </li>
+      <hr>
+      <li class="{% if request.path == '/employment_info' %}active{% endif %}">
+        <a href="{% url 'employment_info' %}">
+          <i class="nc-icon nc-bell-55"></i>
+          <p>Employment</p>
+        </a>
+      </li>
+      <hr>
+      <li class="{% if request.path == '/financial_info' %}active{% endif %}">
+        <a href="{% url 'financial_info' %}">
+          <i class="nc-icon nc-single-02"></i>
+          <p>Income Details</p>
+        </a>
+      </li>
+      <hr>
+      <li class="{% if request.path == '/house_info' %}active{% endif %}">
+        <a href="{% url 'house_info' %}">
+          <i class="nc-icon nc-tile-56"></i>
+          <p>House Info</p>
+        </a>
+      </li>
+      <hr>
+      <li class="{% if request.path == '/referee_info' %}active{% endif %}">
+        <a href="{% url 'referee_info' %}">
+          <i class="nc-icon nc-caps-small"></i>
+          <p>Referees</p>
+        </a>
+      </li>
+      <hr>
+      <li class="{% if request.path == '/declaration_info' %} active {% endif %}">
+        <a href="{% url 'declaration_info' %}">
+          <i class="nc-icon nc-caps-small"></i>
+          <p>Declaration</p>
+        </a>
+      </li>
+      <hr>
+      <li class="{% if request.path == '/payment_details' %} active {% endif %}">
+        <a href="{% url 'payment_details' %}">
+          <i class="nc-icon nc-caps-small"></i>
+          <p>Payments</p>
+        </a>
+      </li>
+        <hr>
+        <li class="{% if request.path == '/preview_info' %}active{% endif %}">
+          <a href="{% url 'preview_info' %}">
+            <i class="nc-icon nc-caps-small"></i>
+            <p>Preview</p>
+          </a>
+        </li>
+          <hr>
+      <li>
+        <a href="{% url 'logoutUser' %}">
+          <i class="nc-icon nc-spaceship text-danger"></i>
+          <p class="logout text-danger">Logout</p>
+        </a>
+      </li>
+
+    </ul>
+  </div>
+</div>

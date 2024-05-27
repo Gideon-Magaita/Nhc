@@ -1,0 +1,30 @@
+{% extends 'pages/client/base.html' %}
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-lg-6 col-md-6 col-sm-3">
+       <div class="card mt-5 shadow">
+         <div class="card-header">
+            <h2>Confirm Deletion</h2>
+         </div>
+         <div class="card-body">
+            <h5>Are you sure you want to delete {{ ref.name }}?</h5>
+                <form id="delete-form" action="{% url 'delete_referee' ref.id %}" method="post">
+                    {% csrf_token %}
+                    <div class="row mt-5">
+
+                        <div class="col-md-6">
+                            <button type="submit" class="btn btn-danger" style="width: 100%;">Yes, Delete</button>
+                        </div>
+
+                        <div class="col-md-6">
+                            <a class="btn btn-info" href="{% url 'referee_info' %}" style="width: 100%;">Cancel</a>
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+  </div>
+</div>
+
+{% endblock %}

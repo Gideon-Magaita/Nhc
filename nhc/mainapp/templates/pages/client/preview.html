@@ -1,0 +1,331 @@
+{% extends 'pages/client/base.html' %}
+
+{% block content %}
+<div class="row">
+  <div class="col-lg-12">
+    <h1>Preview Details</h1>
+    
+    <!-- Applicant Details -->
+    {% for applicant in applica %}
+    <div class="card mb-3">
+      <div class="card-header">
+        <h3 class="mb-0">Applicant Details</h3>
+      </div>
+      <div class="row g-0">
+        
+        <div class="col-md-8">
+          <div class="card-body">
+            <p class="card-text"><strong>Name:</strong> {{ applicant.surname }} {{ applicant.first_name }} {{ applicant.other_name }}</p>
+            <p class="card-text"><strong>Date of Birth:</strong> {{ applicant.date_of_birth }}</p>
+            <p class="card-text"><strong>Nationality:</strong> {{ applicant.nationality.country_name }}</p>
+            <p class="card-text"><strong>Marital Status:</strong> {{ applicant.marital_status }}</p>
+            <p class="card-text"><strong>Status:</strong> {{ applicant.status }}</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+            {% if applicant.passport_size %}
+            <div class="image-container">
+                <img src="{{ applicant.passport_size.url }}" class="images" width="200" height="200" alt="Applicant's Photo">
+            </div>
+            {% endif %}
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+    
+    <!-- Contact Details -->
+    <div class="card mb-3">
+      <div class="card-header">
+        <h3 class="mb-0">Contact Details</h3>
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table table-bordered">
+            <tbody>
+              {% for contact_info in contact %}
+              <tr>
+                <td><strong>Address</strong></td>
+                <td>{{ contact_info.address }}</td>
+              </tr>
+              <tr>
+                <td><strong>Home Phone Number</strong></td>
+                <td>{{ contact_info.home_phone_number }}</td>
+              </tr>
+              <tr>
+                <td><strong>Office Phone Number</strong></td>
+                <td>{{ contact_info.office_phone_number }}</td>
+              </tr>
+              <tr>
+                <td><strong>Your Phone Number</strong></td>
+                <td>{{ contact_info.your_phone_number }}</td>
+              </tr>
+              <tr>
+                <td><strong>Office Email</strong></td>
+                <td>{{ contact_info.office_email }}</td>
+              </tr>
+              <tr>
+                <td><strong>Your Email</strong></td>
+                <td>{{ contact_info.your_email }}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Employment Details -->
+    <div class="card mb-3">
+      <div class="card-header">
+        <h3 class="mb-0">Employment Details</h3>
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table table-bordered">
+            <tbody>
+              {% for employment_info in employee %}
+              <tr>
+                <td><strong>Occupation</strong></td>
+                <td>{{ employment_info.occupation }}</td>
+              </tr>
+              <tr>
+                <td><strong>Employer</strong></td>
+                <td>{{ employment_info.employer }}</td>
+              </tr>
+              <tr>
+                <td><strong>Address</strong></td>
+                <td>{{ employment_info.address }}</td>
+              </tr>
+              <tr>
+                <td><strong>Physical Address</strong></td>
+                <td>{{ employment_info.physical_address }}</td>
+              </tr>
+              <tr>
+                <td><strong>Phone Number</strong></td>
+                <td>{{ employment_info.phone_number }}</td>
+              </tr>
+              <tr>
+                <td><strong>Business Duration</strong></td>
+                <td>{{ employment_info.business_duration }}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Financial Details -->
+    <div class="card mb-3">
+      <div class="card-header">
+        <h3 class="mb-0">Financial Details</h3>
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table table-bordered">
+            <tbody>
+              {% for finance_info in finances %}
+              <tr>
+                <td><strong>Income per Month</strong></td>
+                <td>{{ finance_info.income_per_month }}</td>
+              </tr>
+              <tr>
+                <td><strong>Income per Annum</strong></td>
+                <td>{{ finance_info.income_per_annum }}</td>
+              </tr>
+              <tr>
+                <td><strong>Salary</strong></td>
+                <td>{{ finance_info.salary }}</td>
+              </tr>
+              <tr>
+                <td><strong>House Allowance</strong></td>
+                <td>{{ finance_info.house_allowance }}</td>
+              </tr>
+              <tr>
+                <td><strong>Spouse Income</strong></td>
+                <td>{{ finance_info.spouse_income }}</td>
+              </tr>
+              <tr>
+                <td><strong>Any Other Allowance</strong></td>
+                <td>{{ finance_info.any_other_allowance }}</td>
+              </tr>
+              <tr>
+                <td><strong>Total Income</strong></td>
+                <td>{{ finance_info.total_income }}</td>
+              </tr>
+              <tr>
+                <td><strong>Have any Loan</strong></td>
+                <td>{{ finance_info.have_any_loan }}</td>
+              </tr>
+              <tr>
+                <td><strong>Amount of Loan</strong></td>
+                <td>{{ finance_info.amount_of_loan }}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Referees Details -->
+    <div class="card mb-3">
+      <div class="card-header">
+        <h3 class="mb-0">Referees Details</h3>
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table table-bordered">
+            <tbody>
+              {% for referee_info in referees %}
+              <tr>
+                <td><strong>Name</strong></td>
+                <td>{{ referee_info.name }}</td>
+              </tr>
+              <tr>
+                <td><strong>Position</strong></td>
+                <td>{{ referee_info.position }}</td>
+              </tr>
+              <tr>
+                <td><strong>Address</strong></td>
+                <td>{{ referee_info.address }}</td>
+              </tr>
+              <tr>
+                <td><strong>Mobile</strong></td>
+                <td>{{ referee_info.mobile }}</td>
+              </tr>
+              <tr>
+                <td><strong>Email</strong></td>
+                <td>{{ referee_info.email }}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    
+    <!-- House Details -->
+    <div class="card mb-3">
+      <div class="card-header">
+        <h3 class="mb-0">House Details</h3>
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table table-bordered">
+            <tbody>
+              {% for house_info in house %}
+              <tr>
+                <td><strong>Project Name</strong></td>
+                <td>{{ house_info.project_name }}</td>
+              </tr>
+              <tr>
+                <td><strong>House Location</strong></td>
+                <td>{{ house_info.house_location }}</td>
+              </tr>
+              <tr>
+                <td><strong>House Type</strong></td>
+                <td>{{ house_info.house_type }}</td>
+              </tr>
+              <tr>
+                <td><strong>Number of Rooms</strong></td>
+                <td>{{ house_info.number_of_rooms }}</td>
+              </tr>
+              <tr>
+                <td><strong>House Price</strong></td>
+                <td>{{ house_info.house_price }}</td>
+              </tr>
+              <tr>
+                <td><strong>Mode of Payment</strong></td>
+                <td>{{ house_info.mode_of_payment }}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Declaration Details -->
+    <div class="card mb-3">
+      <div class="card-header">
+        <h3 class="mb-0">Declaration Details</h3>
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table table-bordered">
+            <tbody>
+              {% for declaration_info in declaration %}
+              <tr>
+                <td><strong>Signature</strong></td>
+                <td>{{ declaration_info.signature }}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    
+        <!-- payment Details -->
+        <div class="card mb-3">
+          <div class="card-header bg-danger">
+            <h3 class="mb-0 text text-white p-2">Payments Details</h3>
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table table-bordered">
+                <tbody>
+                  {% for pay in payment %}
+                  <tr>
+                    <td><h5><strong>Payment Method</strong></h5></td>
+                    <td><h5><strong>{{ pay.payment_method }}</strong></h5></td>
+                  </tr>
+                  <tr>
+                    <td><h5><strong>Amount</strong></h5></td>
+                    <td><h5><strong>{{ pay.amount }}</strong></h5></td>
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+    <!-- Dependant Details -->
+    <div class="card mb-3">
+      <div class="card-header">
+        <h3 class="mb-0">Dependant Details</h3>
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table table-bordered">
+            <tbody>
+              {% for dependant_info in dependant %}
+              <tr>
+                <td><strong>Full Name</strong></td>
+                <td>{{ dependant_info.full_name }}</td>
+              </tr>
+              <tr>
+                <td><strong>Relationship to Applicant</strong></td>
+                <td>{{ dependant_info.relationship_to_applicant }}</td>
+              </tr>
+              <tr>
+                <td><strong>Gender</strong></td>
+                <td>{{ dependant_info.gender }}</td>
+              </tr>
+              <tr>
+                <td><strong>Date of Birth</strong></td>
+                <td>{{ dependant_info.date_of_birth }}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+</div>
+
+{% endblock %}

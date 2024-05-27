@@ -1,0 +1,134 @@
+{% extends 'pages/officers/base.html' %}
+{% block content %}
+<div class="row">
+  <div class="col-lg-12 col-md-6 col-sm-3">
+    <!--messages-->
+    {% include 'messages.html' %}
+    <!--messages-->
+   <div class="card shadow">
+    <div class="card-header">
+      <h2>Applicant Particulars</h2>
+    </div>
+    <div class="card-body">
+   
+   <div class="table-responsive animate__animated animate__fadeIn">
+     <table id="mytable" class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Applicant Name</th>
+                <th>Contact Information</th>
+                <th>Employment Details</th>
+                <th>Financial Information</th>
+                <th>Referee Details</th>
+                <th>House Information</th>
+                <th>Payment Information</th>
+                <th>Declaration Details</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for applicant in applicants %}
+            <tr>
+                <td>
+                   <h6 class="text text-danger">Name: {{ applicant.surname }} {{ applicant.first_name }}</h6><br>
+                   <p style="font-size:16px;font-weight:bold;">Other Name: {{ applicant.other_name }} </p><br>
+                   <p style="font-size:16px;font-weight:bold;">Date of Birth: {{ applicant.date_of_birth }} </p><br>
+                   <p style="font-size:16px;font-weight:bold;">Nationality: {{ applicant.nationality.country_name }} </p><br>
+                    <p style="font-size:16px;font-weight:bold;">Marital Status: {{ applicant.marital_status }} </p><br>
+                    <p style="font-size:16px;font-weight:bold;">Status: <i class="status text-danger">{{ applicant.status }} </i></p><br>
+                    <strong>Passport Size: </strong><br> <img src="{{ applicant.passport_size.url }}" width="120" height="120"> <br><br>
+                   <strong> NIDA Birth: </strong><a href="{{ applicant.nida_birth.url }}" class="text text-danger">View Document</a>
+                </td>
+                <td>
+                    {% for contact in contacts %}
+                        {% if contact.user == applicant.user %}
+                            <p style="font-size:16px;font-weight:bold;">Address: {{ contact.address }}</p> <br>
+                            <p style="font-size:16px;">Home Phone Number: {{ contact.home_phone_number }}</p> <br>
+                            <p style="font-size:16px;">Office Phone Number: {{ contact.office_phone_number }}</p> <br>
+                            <p style="font-size:16px;">Your Phone Number: {{ contact.your_phone_number }}</p> <br>
+                            <p style="font-size:16px;">Office Email: {{ contact.office_email }}</p> <br>
+                            <p style="font-size:16px;">Your Email: {{ contact.your_email }}</p>
+                        {% endif %}
+                    {% endfor %}
+                </td>
+                <td>
+                    {% for employment in employments %}
+                        {% if employment.user == applicant.user %}
+                            <p style="font-size:16px;font-weight:bold;">Occupation: {{ employment.occupation }}</p> <br>
+                            <p style="font-size:16px;">Employer: {{ employment.employer }}</p> <br>
+                            <p style="font-size:16px;">Address: {{ employment.address }}</p> <br>
+                            <p style="font-size:16px;">Physical Address: {{ employment.physical_address }}</p> <br>
+                            <p style="font-size:16px;">Phone Number: {{ employment.phone_number }}</p> <br>
+                            <p style="font-size:16px;">Business Duration: {{ employment.business_duration }}</p>
+                        {% endif %}
+                    {% endfor %}
+                </td>
+                <td>
+                    {% for financial_info in financial_infos %}
+                        {% if financial_info.user == applicant.user %}
+                            <p style="font-size:16px;font-weight:bold;">Income per Month: {{ financial_info.income_per_month }}</p> <br>
+                            <p style="font-size:16px;">Income per Annum: {{ financial_info.income_per_annum }}</p> <br>
+                            <p style="font-size:16px;">Salary: {{ financial_info.salary }}</p> <br>
+                            <p style="font-size:16px;">House Allowance: {{ financial_info.house_allowance }}</p> <br>
+                            <p style="font-size:16px;">Spouse Income: {{ financial_info.spouse_income }}</p> <br>
+                            <p style="font-size:16px;">Any Other Allowance: {{ financial_info.any_other_allowance }}</p> <br>
+                            <p style="font-size:16px;">Total Income: {{ financial_info.total_income }}</p> <br>
+                            <p style="font-size:16px;">Have any Loan: {{ financial_info.have_any_loan }}</p> <br>
+                            <p style="font-size:16px;">Amount of Loan: {{ financial_info.amount_of_loan }}</p>
+                        {% endif %}
+                    {% endfor %}
+                </td>
+                <td>
+                    {% for referee in referees %}
+                        {% if referee.user == applicant.user %}
+                            <p style="font-size:16px;font-weight:bold;">Name: {{ referee.name }}</p> <br>
+                            <p style="font-size:16px;">Position: {{ referee.position }}</p> <br>
+                            <p style="font-size:16px;">Address: {{ referee.address }}</p> <br>
+                            <p style="font-size:16px;">Mobile: {{ referee.mobile }}</p> <br>
+                            <p style="font-size:16px;">Email: {{ referee.email }}</p>
+                        {% endif %}
+                    {% endfor %}
+                </td>
+                <td>
+                    {% for house in houses %}
+                        {% if house.user == applicant.user %}
+                            <p style="font-size:16px;font-weight:bold;">Project Name: {{ house.project_name }}</p> <br>
+                            <p style="font-size:16px;">House Location: {{ house.house_location }}</p> <br>
+                            <p style="font-size:16px;">House Type: {{ house.house_type }}</p> <br>
+                            <p style="font-size:16px;">Number of Rooms: {{ house.number_of_rooms }}</p> <br>
+                            <p style="font-size:16px;">House Price: {{ house.house_price }}</p> <br>
+                            <p style="font-size:16px;">Mode of Payment: {{ house.mode_of_payment }}</p>
+                        {% endif %}
+                    {% endfor %}
+                </td>
+                <td>
+                    {% for payment in payments %}
+                        {% if payment.user == applicant.user %}
+                            <p style="font-size:16px;font-weight:bold;">Payment Method: {{ payment.payment_method }}</p> <br>
+                            <p style="font-size:16px;">Amount: {{ payment.amount }}</p>
+                        {% endif %}
+                    {% endfor %}
+                </td>
+                <td>
+                    {% for dec in declaration %}
+                        {% if dec.user == applicant.user %}
+                            <p style="font-size:16px;font-weight:bold;" class="text-danger">Signature: {{ dec.signature }}</p> <br>
+                          
+                        {% endif %}
+                    {% endfor %}
+                </td>
+                <td>
+                   <a href="{% url 'edit_status' applicant.id %}" class="btn btn-info">Reply Back</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+     </table>
+    </div>
+    <!--table-->
+    </div>
+   </div>
+  </div>
+</div>
+
+{% endblock %}

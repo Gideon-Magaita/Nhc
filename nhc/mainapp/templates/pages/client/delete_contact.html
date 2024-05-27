@@ -1,0 +1,37 @@
+{% extends 'pages/client/base.html' %}
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-lg-6 col-md-6 col-sm-3">
+       <div class="card mt-5 shadow">
+         <div class="card-header">
+            <h2>Confirm Deletion</h2>
+         </div>
+         <div class="card-body">
+            <h5>Are you sure you want to delete {{ applicant }}?</h5>
+                <form id="delete-form" action="{% url 'delete_contact' applicant.id %}" method="post">
+                    {% csrf_token %}
+                    <div class="row mt-5">
+
+                        <div class="col-md-6">
+                            <button type="submit" class="btn btn-danger" style="width: 100%;">Yes, Delete</button>
+                        </div>
+
+                        <div class="col-md-6">
+                            <a class="btn btn-info" href="{% url 'contact_info' %}" style="width: 100%;">Cancel</a>
+                        </div>
+
+                    </div>
+                </form>
+
+                <!-- JavaScript code for confirmation dialog -->
+                <!-- <script>
+                    function confirmDelete() {
+                        return confirm("Are you sure you want to delete this data?");
+                    }
+                </script> -->
+            </div>
+        </div>
+  </div>
+</div>
+
+{% endblock %}

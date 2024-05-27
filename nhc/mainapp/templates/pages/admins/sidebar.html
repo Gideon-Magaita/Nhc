@@ -1,0 +1,35 @@
+<div class="sidebar-wrapper">
+    <ul class="nav">
+      <li class="{% if request.path == '/admin_home' %}active{% endif %}">
+        <a href="{% url 'admin_home' %}">
+          <i class="nc-icon nc-bank"></i>
+          <p>Dashboard</p>
+        </a>
+      </li>
+      <hr>
+      <li class="{% if request.path == '/users' %}active{% endif %}">
+        <a href="{% url 'users' %}">
+          <i class="nc-icon nc-diamond"></i>
+          <p>Manage Users</p>
+        </a>
+      </li>
+      <hr>
+      
+      <li class="{% if request.path == '/add_project' %}active{% endif %}">
+        <a href="{% url 'add_project' %}">
+          <i class="nc-icon nc-diamond"></i>
+          <p>Projects</p>
+        </a>
+      </li>
+      <hr>
+
+      <li>
+        <a href="{% url 'logoutUser' %}">
+          <i class="nc-icon nc-spaceship text-danger"></i>
+          <p class="logout text-danger">Logout</p>
+        </a>
+      </li>
+      <hr>
+    </ul>
+  </div>
+</div>

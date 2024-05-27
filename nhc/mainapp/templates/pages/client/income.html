@@ -1,0 +1,138 @@
+{% extends 'pages/client/base.html' %}
+
+{% block content %}
+<div class="row">
+  <div class="col-lg-12 col-md-6 col-sm-3">
+    <!--messages-->
+    {% include 'messages.html' %}
+    <!--messages-->
+    <div class="card shadow">
+      <div class="card-header">
+        <h2>Financial Information</h2>
+      </div>
+      <div class="card-body">
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop">
+          Add financial information
+        </button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Financial Information</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form action="" method="post" enctype="multipart/form-data">
+                  {% csrf_token %}
+                  <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="id_income_per_month">Income per month</label>
+                      {{ form.income_per_month }}
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="id_income_per_annum">Income per annum</label>
+                      {{ form.income_per_annum }}
+                    </div>
+                  </div>
+                  <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="id_salary">Salary</label>
+                      {{ form.salary }}
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="id_house_allowance">House allowance</label>
+                      {{ form.house_allowance }}
+                    </div>
+                  </div>
+                  <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="id_spouse_income">Spouse income</label>
+                      {{ form.spouse_income }}
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="id_any_other_allowance">Any other allowance</label>
+                      {{ form.any_other_allowance }}
+                    </div>
+                  </div>
+                  <div class="form-row">
+                    <div class="form-group col-md-12">
+                        <label for="id_total_income">Total income</label>
+                      {{ form.total_income }}
+                    </div>
+                   
+                  </div>
+                  <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="id_have_any_loan">Have any loan ?</label>
+                        {{ form.have_any_loan }}
+                    </div>
+
+                    <div class="form-group col-md-6">
+                        <label for="id_amount_of_loan">Amount of loan</label>
+                         {{ form.amount_of_loan }}
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <button type="button" class="btn btn-secondary form-control" data-dismiss="modal">Close</button>
+                    </div>
+                    <div class="col-md-6">
+                      <button type="submit" class="btn btn-info form-control">Save Details</button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--table-->
+        <div class="table-responsive  animate__animated animate__fadeIn">
+          <table id="mytable" class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th>Income per month</th>
+                <th>Income per annum</th>
+                <th>Salary</th>
+                <th>House allowance</th>
+                <th>Spouse income</th>
+                <th>Any other allowance</th>
+                <th>Total income</th>
+                <th>Have any loan</th>
+                <th>Amount of loan</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for finance in finances %}
+              <tr>
+                <td>Tsh.{{ finance.income_per_month }}</td>
+                <td>Tsh.{{ finance.income_per_annum }}</td>
+                <td>Tsh.{{ finance.salary }}</td>
+                <td>Tsh.{{ finance.house_allowance }}</td>
+                <td>Tsh.{{ finance.spouse_income }}</td>
+                <td>Tsh.{{ finance.any_other_allowance }}</td>
+                <td>Tsh.{{ finance.total_income }}</td>
+                <td>{{ finance.have_any_loan }}</td>
+                <td>Tsh.{{ finance.amount_of_loan }}</td>
+                <td style="display:flex;">
+                  <a href="{% url 'edit_financial' finance.id %}" class="btn btn-success" style="margin-right: 10px;">Edit</a>
+                  <a href="http://" class="btn btn-secondary" style="margin-right: 10px;">View</a>
+                  <a href="{% url 'delete_financial' finance.id %}" class="btn btn-danger" >Delete</a>
+                </td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+        <!--table-->
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

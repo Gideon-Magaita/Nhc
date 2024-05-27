@@ -1,0 +1,31 @@
+{% extends 'pages/admins/base.html' %}
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-lg-8 col-md-6 col-sm-3">
+    <!--messages-->
+    {% include 'messages.html' %}
+    <!--messages-->
+   <div class="card shadow">
+    <div class="card-header">
+      <h2>Edit House Details</h2>
+    </div>
+    <div class="card-body">
+        <form action="" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+             {{form.as_p}}
+            <div class="row">
+                <div class="col-md-6">
+                    <a class="btn btn-secondary form-control" href="{% url 'add_house' %}">Close</a>
+                    </div>
+              <div class="col-md-6">
+                <button type="submit" class="btn btn-info form-control">Save Details</button>
+              </div>
+            </div>
+          </form>
+    
+    </div>
+   </div>
+  </div>
+</div>
+
+{% endblock %}

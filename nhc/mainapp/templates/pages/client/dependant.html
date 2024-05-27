@@ -1,0 +1,80 @@
+{% extends 'pages/client/base.html' %}
+{% block content %}
+<div class="row">
+  <div class="col-lg-12 col-md-6 col-sm-3">
+    <!--messages-->
+    {% include 'messages.html' %}
+    <!--messages-->
+   <div class="card shadow">
+    <div class="card-header">
+      <h2>Dependant Details</h2>
+    </div>
+    <div class="card-body">
+  <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop">
+      Add dependant details
+    </button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="staticBackdropLabel">Dependant Details</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form action="" method="post" enctype="multipart/form-data">
+              {% csrf_token %}
+               {{form.as_p}}
+              <div class="row">
+                <div class="col-md-6">
+                  <button type="button" class="btn btn-secondary form-control" data-dismiss="modal">Close</button>                </div>
+                <div class="col-md-6">
+                  <button type="submit" class="btn btn-info form-control">Save Details</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  <!--table-->    
+  <div class="table-responsive  animate__animated animate__fadeIn">
+     <table id="mytable" class="table table-bordered table-striped">
+      <thead>
+        <tr>
+          <th>Full Name</th>
+          <th>Relationship to Applicant</th>
+          <th>Gender</th>
+          <th>Date of Birth</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for dep in dependant %}
+        <tr>
+          <td>{{ dep.full_name }}</td>
+          <td>{{ dep.relationship_to_applicant }}</td>
+          <td>{{ dep.gender }}</td>          
+          <td>{{ dep.date_of_birth }}</td>
+
+          <td style="display:flex;">
+            <a href="{% url 'edit_dependant' dep.id %}" class="btn btn-success" style="margin-right: 10px;">Edit</a>
+            <a href="" class="btn btn-secondary" style="margin-right: 10px;">View</a>
+            <a href="{% url 'delete_dependant' dep.id %}" class="btn btn-danger" >Delete</a>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+     </table>
+    </div>
+    <!--table-->
+    </div>
+   </div>
+  </div>
+</div>
+
+{% endblock %}
